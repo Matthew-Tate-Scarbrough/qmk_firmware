@@ -21,7 +21,7 @@
 
 #define USE_SERIAL
 
-// #define MASTER_LEFT	// This defines the master as the left-half keyboard.
-#define MASTER_RIGHT	// This defines the master as the right-half keyboard.
-// #define EE_HANDS		// I have no idea
-// Rows are doubled-up
+#define MASTER_LEFT	// This defines the master as the left-half keyboard.
+// #define MASTER_RIGHT	// This defines the master as the right-half keyboard.
+// #define EE_HANDS	// This allows either hand to be master *if* RGBLIGHT_ENABLE=yes
+#define FLIP_HALF	// This is for if the halves of the keyboard are wired mirrored
