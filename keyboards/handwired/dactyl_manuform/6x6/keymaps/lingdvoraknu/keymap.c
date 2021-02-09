@@ -1,12 +1,21 @@
-#include QMK_KEYBOARD_H
+/*                                                                            *
+ * This file will require that you have `TAP_DANCE_ENABLE` enabled in the     *
+ * `rules.mk`.                                                                *
+ *                                                                            */
 
+#include QMK_KEYBOARD_H
+#include keymap_dvorak.h
 
 #define _DVORAK 0
 #define _NUM    1
 #define _RAISE  2
 
-#define RAISE  TG(_RAISE)
-#define MY_NUM TG(_NUM)
+#define RAISE   TG(_RAISE)
+#define MY_NUM  TG(_NUM)
+#define MY_LSFT MT(MOD_LSFT, KC_SPC)
+#define MY_RSFT MT(MOD_RSFT, KC_SPC)
+#define MY_MOD  MT(MOD_LWIN, OSM(MOD_LSFT | MOD_LWIN))
+#define MY_SMOD MT(MOD_LSFT | MOD_LWIN, OSM(MOD_LWIN))
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -67,16 +76,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //       |       |       |       |       |        |*                                                 *|       |       |       |       |       |        ||
     //-------+-------+-------+-------+=======+========|*                                                 *|=======+=======+-------+-------+-------+--------||
                     //       |       |       |        |*                                                 *|       |       |       |        ||
-                      MY_NUM ,RAISE  ,KC_BSLS,KC_SPC ,/*                                                 */KC_ENT ,KC_BSPC,KC_DOWN,KC_UP  ,//
+                      MY_NUM ,RAISE  ,KC_BSLS,MY_SMOD ,/*                                                */KC_ENT ,KC_BSPC,KC_DEL ,KC_NLCK,//
                     //       |       |       |        |*                                                 *|       |       |       |        ||
                     //-------+-------+=======+========|*                                                 *|=======+=======+-------+--------||
                                                         //-------+--------|*         *|-------+--------||
                                                         //       |        |*         *|       |        ||
-                                                          KC_LCTL,KC_LSFT,/*         */KC_LWIN,KC_RSFT,//
+                                                          KC_LCTL,MY_LSFT,/*         */MY_RSFT,MY_MOD ,//
                                                         //       |        |*         *|       |        ||
                                                         //-------+--------|*         *|-------+--------||
                                                         //       |        |*         *|       |        ||
-                                                          KC_LWIN,KC_LALT,/*         */KC_DEL ,KC_RCTL //
+                                                          MY_MOD ,KC_LALT,/*         */KC_RALT,MY_SMOD //
                                                         //       |        |*         *|       |        ||
                                                         //-------+--------|*         *|-------+--------||
 ),
