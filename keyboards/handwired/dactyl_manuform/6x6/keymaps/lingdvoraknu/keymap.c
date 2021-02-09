@@ -4,7 +4,7 @@
  *                                                                            */
 
 #include QMK_KEYBOARD_H
-#include keymap_dvorak.h
+// #include keymap_dvorak.h
 
 #define _DVORAK 0
 #define _NUM    1
@@ -14,8 +14,8 @@
 #define MY_NUM  TG(_NUM)
 #define MY_LSFT MT(MOD_LSFT, KC_SPC)
 #define MY_RSFT MT(MOD_RSFT, KC_SPC)
-#define MY_MOD  MT(MOD_LWIN, OSM(MOD_LSFT | MOD_LWIN))
-#define MY_SMOD MT(MOD_LSFT | MOD_LWIN, OSM(MOD_LWIN))
+#define MY_MOD  MT(MOD_LGUI, OSM(MOD_LSFT | MOD_LGUI))
+#define MY_SMOD MT(MOD_LSFT | MOD_LGUI, OSM(MOD_LGUI))
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
