@@ -4,7 +4,7 @@
  *                                                                            */
 
 #include QMK_KEYBOARD_H
-#include ../../../../quantum/keymap_extras/keymap_dvorak.h
+#include keymap_dvorak.h
 
 #define _DVORAK 0
 #define _NUM    1
