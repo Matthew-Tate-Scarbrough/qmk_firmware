@@ -204,6 +204,6 @@
 	 *     l   = latin
 	 *     s   = stroke                                                       *
 	 *     v   = vertical stroke                                              *
-	 *                                                                        *
+	 *                                                                        */
 
 #endif

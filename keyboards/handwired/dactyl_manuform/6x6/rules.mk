@@ -14,6 +14,7 @@
       MIDI_ENABLE = no     # MIDI controls
      AUDIO_ENABLE = no     # Audio output on port C6
 UNICODEMAP_ENABLE = yes    # Unicode -- allows input of UNICODE chars
+#UNICODE_MAP_ENABLE = yes    # Unicode -- allows input of UNICODE chars
       CUIS_ENABLE = no     # Unicode Symbolic Names -- make sym names
  BLUETOOTH_ENABLE = no     # Enable Bluetooth with the Adafruit EZ-Key HID
   RGBLIGHT_ENABLE = no     # Enable WS2812 RGB underlight. 
