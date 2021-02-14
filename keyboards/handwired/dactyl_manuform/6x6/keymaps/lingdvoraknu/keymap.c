@@ -4,18 +4,23 @@
  *                                                                            */
 
 #include QMK_KEYBOARD_H
-// #include keymap_dvorak.h
+#include keymap_dvorak.h
 
 #define _DVORAK 0
 #define _NUM    1
 #define _RAISE  2
 
+#define TAPPING_TERM 100
+
+/* LAYERS                                                                     */
 #define RAISE   TG(_RAISE)
 #define MY_NUM  TG(_NUM)
+
+/* CUSTOM KEYS                                                                */
 #define MY_LSFT MT(MOD_LSFT, KC_SPC)
 #define MY_RSFT MT(MOD_RSFT, KC_SPC)
-#define MY_MOD  MT(MOD_LGUI, OSM(MOD_LSFT | MOD_LGUI))
-#define MY_SMOD MT(MOD_LSFT | MOD_LGUI, OSM(MOD_LGUI))
+#define MY_SMOD MT(MOD_LSFT | MOD_LGUI, KC_ESC)
+#define MY_SPWN MT(MOD_LSFT | MOD_LGUI, MOD_LSFT | MOD_LGUI | KC_ENT) // $TERM Spawn
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -42,11 +47,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * │      │      │      │      │      │      │                                      │      │      │      │      │      │      │ *
      * │      │      │      │      │      │      │                                      │      │      │      │      │      │      │ *
      * └──────┴──────┼──────┼──────╆━━━━━━╈━━━━━━╈━━━━━━┳━━━━━━┓          ┏━━━━━━┳━━━━━━╈━━━━━━╈━━━━━━╅──────┼──────┼──────┴──────┘ *
-     *               │ ←    │ →    ┃ LEFT ┃LEFT  ┃ TAB  ┃SPACE ┃          ┃ LEFT ┃ ALT- ┃RIGHT ┃BACK  ┃ ↓    │ ↑    │               *
-     *               │      │      ┃ CTRL ┃ SHIFT┃      ┃      ┃          ┃ META ┃  GR  ┃ SHIFT┃ SPACE┃      │      │               *
-     *               │      │      ┃      ┃      ┃      ┃      ┃          ┃      ┃      ┃      ┃      ┃      │      │               *
+     *               │ ←    │ →    ┃ LEFT ┃LEFT  ┃ TAB  ┃SPACE ┃          ┃SPACE/┃SUPER ┃BACK  ┃RETURN┃ ↓    │ ↑    │               *
+     *               │      │      ┃ CTRL ┃ SHIFT┃      ┃      ┃          ┃RIGHT ┃      ┃ SPACE┃      ┃      │      │               *
+     *               │      │      ┃      ┃      ┃      ┃      ┃          ┃ SHIFT┃      ┃      ┃      ┃      │      │               *
      *               └──────┴──────┺━━━━━━┻━━━━━━╋━━━━━━╋━━━━━━┫          ┣━━━━━━╋━━━━━━╋━━━━━━┻━━━━━━┹──────┴──────┘               *
-     *                                           ┃ LEFT ┃RAISE ┃          ┃LOWER ┃DELETE┃                                           *
+     *                                           ┃ LEFT ┃RAISE ┃          ┃LOWER ┃SPAWN	┃                                           *
      *                                           ┃  ALT ┃      ┃          ┃      ┃      ┃                                           *
      *                                           ┃      ┃      ┃          ┃      ┃      ┃                                           *
      *                                           ┗━━━━━━┻━━━━━━┛          ┗━━━━━━┻━━━━━━┛                                           *
@@ -72,20 +77,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //       |       |       |       |       |        |*                                                 *|       |       |       |       |       |        ||
     //-------+-------+-------+-------+-------+--------|*                                                 *|-------+-------+-------+-------+-------+--------||
     //       |       |       |       |       |        |*                                                 *|       |       |       |       |       |        ||
-      KC_LBRC,KC_SCLN,KC_Q   ,KC_J   ,KC_K   ,KC_X   ,/*                                                 */KC_B   ,KC_M   ,KC_W   ,KC_V   ,KC_Z   ,KC_RBRC,//
+      MY_NUM ,KC_SCLN,KC_Q   ,KC_J   ,KC_K   ,KC_X   ,/*                                                 */KC_B   ,KC_M   ,KC_W   ,KC_V   ,KC_Z   ,RAISE  ,//
     //       |       |       |       |       |        |*                                                 *|       |       |       |       |       |        ||
     //-------+-------+-------+-------+=======+========|*                                                 *|=======+=======+-------+-------+-------+--------||
                     //       |       |       |        |*                                                 *|       |       |       |        ||
-                      MY_NUM ,RAISE  ,KC_BSLS,MY_SMOD ,/*                                                */KC_ENT ,KC_BSPC,KC_DEL ,KC_NLCK,//
+                      KC_LBRC,KC_RBRC,MY_SMOD,KC_SPC ,/*                                                 */KC_BSPC,KC_ENT ,KC_DEL ,KC_BSLS,//
                     //       |       |       |        |*                                                 *|       |       |       |        ||
                     //-------+-------+=======+========|*                                                 *|=======+=======+-------+--------||
                                                         //-------+--------|*         *|-------+--------||
                                                         //       |        |*         *|       |        ||
-                                                          KC_LCTL,MY_LSFT,/*         */MY_RSFT,MY_MOD ,//
+                                                          KC_LCTL,MY_LSFT,/*         */MY_RSFT,KC_LGUI,//
                                                         //       |        |*         *|       |        ||
                                                         //-------+--------|*         *|-------+--------||
                                                         //       |        |*         *|       |        ||
-                                                          MY_MOD ,KC_LALT,/*         */KC_RALT,MY_SMOD //
+                                                          MY_MOD ,KC_LALT,/*         */KC_RALT,MY_SPWN //
                                                         //       |        |*         *|       |        ||
                                                         //-------+--------|*         *|-------+--------||
 ),
