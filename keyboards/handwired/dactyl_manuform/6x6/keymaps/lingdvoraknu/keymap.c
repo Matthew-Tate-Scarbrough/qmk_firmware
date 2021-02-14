@@ -4,13 +4,13 @@
  *                                                                            */
 
 #include QMK_KEYBOARD_H
-#include keymap_dvorak.h
+#include ../../../../quantum/keymap_extras/keymap_dvorak.h
 
 #define _DVORAK 0
 #define _NUM    1
 #define _RAISE  2
 
-#define TAPPING_TERM 100
+//#define TAPPING_TERM 100
 
 /* LAYERS                                                                     */
 #define RAISE   TG(_RAISE)
@@ -43,16 +43,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * │      │      │      │      ┃      ┃      │                                      │      ┃      ┃      │      │      │      │ *
      * │      │      │      │      ┃      ┃      │                                      │      ┃      ┃      │      │      │      │ *
      * ├──────┼──────┼──────┼──────╄━━━━━━╃──────┤                                      ├──────╄━━━━━━╃──────┼──────┼──────┼──────┤ *
-     * │ [    │ ;    │ q    │ j    │ k    │ x    │                                      │ b    │ m    │ w    │ v    │ z    │ ]    │ *
+     * │MY_NUM│ ;    │ q    │ j    │ k    │ x    │                                      │ b    │ m    │ w    │ v    │ z    │RAISE │ *
      * │      │      │      │      │      │      │                                      │      │      │      │      │      │      │ *
      * │      │      │      │      │      │      │                                      │      │      │      │      │      │      │ *
      * └──────┴──────┼──────┼──────╆━━━━━━╈━━━━━━╈━━━━━━┳━━━━━━┓          ┏━━━━━━┳━━━━━━╈━━━━━━╈━━━━━━╅──────┼──────┼──────┴──────┘ *
-     *               │ ←    │ →    ┃ LEFT ┃LEFT  ┃ TAB  ┃SPACE ┃          ┃SPACE/┃SUPER ┃BACK  ┃RETURN┃ ↓    │ ↑    │               *
-     *               │      │      ┃ CTRL ┃ SHIFT┃      ┃      ┃          ┃RIGHT ┃      ┃ SPACE┃      ┃      │      │               *
+     *               │ [    │ ]    ┃SHIFT+┃SPACE ┃LEFT- ┃SPACE/┃          ┃SPACE/┃SUPER ┃BACK  ┃RETURN┃DELETE│BACK- │               *
+     *               │      │      ┃SUPER ┃      ┃ CTRL ┃ LEFT ┃          ┃RIGHT ┃      ┃ SPACE┃      ┃      │ SLASH│               *
      *               │      │      ┃      ┃      ┃      ┃      ┃          ┃ SHIFT┃      ┃      ┃      ┃      │      │               *
      *               └──────┴──────┺━━━━━━┻━━━━━━╋━━━━━━╋━━━━━━┫          ┣━━━━━━╋━━━━━━╋━━━━━━┻━━━━━━┹──────┴──────┘               *
-     *                                           ┃ LEFT ┃RAISE ┃          ┃LOWER ┃SPAWN	┃                                           *
-     *                                           ┃  ALT ┃      ┃          ┃      ┃      ┃                                           *
+     *                                           ┃SUPER ┃ LEFT ┃          ┃RIGHT ┃SPAWN	┃                                           *
+     *                                           ┃      ┃ ALT  ┃          ┃ ALT  ┃      ┃                                           *
      *                                           ┃      ┃      ┃          ┃      ┃      ┃                                           *
      *                                           ┗━━━━━━┻━━━━━━┛          ┗━━━━━━┻━━━━━━┛                                           *
      *                                                                                                                              */
@@ -90,7 +90,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                         //       |        |*         *|       |        ||
                                                         //-------+--------|*         *|-------+--------||
                                                         //       |        |*         *|       |        ||
-                                                          MY_MOD ,KC_LALT,/*         */KC_RALT,MY_SPWN //
+                                                          KC_LGUI,KC_LALT,/*         */KC_RALT,MY_SPWN //
                                                         //       |        |*         *|       |        ||
                                                         //-------+--------|*         *|-------+--------||
 ),
