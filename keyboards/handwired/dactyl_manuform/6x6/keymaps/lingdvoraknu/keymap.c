@@ -26,7 +26,8 @@
 #define MY_SPWN MT(MOD_LSFT | MOD_LGUI, MOD_LSFT | MOD_LGUI | KC_ENT) // $TERM Spawn
 #define RC_A XP(0x0430, 0x0410)
 
-const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+//const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+const uint32_t PROGMEM unicode_map[] keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
     /*                                                                                                                              *
@@ -137,6 +138,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                         //       |        |*         *|       |        ||
                                                         //-------+--------|*         *|-------+--------||
 ),
+
 
 [_RAISE] = LAYOUT_6x6(
 
