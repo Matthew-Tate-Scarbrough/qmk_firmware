@@ -24,11 +24,19 @@
 #define MY_RSFT MT(MOD_RSFT, KC_SPC)
 #define MY_SMOD MT(MOD_LSFT | MOD_LGUI, KC_ESC)
 #define MY_SPWN MT(MOD_LSFT | MOD_LGUI, MOD_LSFT | MOD_LGUI | KC_ENT) // $TERM Spawn
-#define RC_A XP(0x0430, 0x0410)
+//#define RC_A XP(0x0430, 0x0410)
 
-//const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-const uint32_t PROGMEM unicode_map[] keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+enum unicode_names {
+	ru_a,
+	ru_A
+};
 
+const uint32_t PROGMEM unicode_map[] = {
+	[ru_a] = 0x0430,
+	[ru_A] = 0x0410
+};
+
+const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     /*                                                                                                                              *
      * ┌──────┬──────┬──────┬──────┬──────┬──────┐                                      ┌──────┬──────┬──────┬──────┬──────┬──────┐ *
@@ -113,7 +121,7 @@ const uint32_t PROGMEM unicode_map[] keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //       |       |       |       |       |        |*                                                 *|       |       |       |       |       |        ||
     //-------+-------+-------+-------+-------+--------|*                                                 *|-------+-------+-------+-------+-------+--------||
     //       |       |       |       |       |        |*                                                 *|       |       |       |       |       |        ||
-      _______,RC_A   ,_______,_______,_______,_______,/*                                                 */KC_PCMM,KC_P7  ,KC_P8  ,KC_P9  ,KC_PPLS,_______,//
+      _______,_______,_______,_______,_______,_______,/*                                                 */KC_PCMM,KC_P7  ,KC_P8  ,KC_P9  ,KC_PPLS,_______,//
     //       |       |       |       |       |        |*                                                 *|       |       |       |       |       |        ||
     //-------+-------+-------+-------+-------+--------|*                                                 *|-------+-------+-------+-------+-------+--------||
     //       |       |       |       |       |        |*                                                 *|       |       |       |       |       |        ||
