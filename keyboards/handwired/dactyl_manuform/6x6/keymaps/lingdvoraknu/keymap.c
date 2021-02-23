@@ -20,10 +20,10 @@
 #define MY_RSFT MT(MOD_RSFT, KC_SPC)
 #define MY_SMOD MT(MOD_LSFT | MOD_LGUI, KC_ESC)
 #define MY_SPWN MT(MOD_LSFT | MOD_LGUI, MOD_LSFT | MOD_LGUI | KC_ENT) // $TERM Spawn
-#define MY_F1   MT(KC_F1, TG(0))
-#define MY_F2   MT(KC_F2, TG(1))
-#define MY_F3   MT(KC_F3, TG(2))
-#define MY_F4   MT(KC_F3, TG(3))
+#define MY_F1   MT(TG(0), KC_F1)
+#define MY_F2   MT(TG(1), KC_F2)
+#define MY_F3   MT(TG(2), KC_F3)
+#define MY_F4   MT(TG(3), KC_F3)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
