@@ -16,20 +16,28 @@
 #define MY_NUM  TG(_NUM)
 
 /* CUSTOM KEYS                                                                */
-#define MY_LSFT MT(MOD_LSFT, KC_SPC)
+//#define MY_LSFT MT(MOD_LSFT, KC_SPC)
 #define MY_RSFT MT(MOD_RSFT, KC_SPC)
-#define MY_SMOD MT(MOD_LSFT | MOD_LGUI, KC_ESC)
-#define MY_SPWN MT(MOD_LSFT | MOD_LGUI, MOD_LSFT | MOD_LGUI | KC_ENT) // $TERM Spawn
-#define MY_F1   MT(TG(0), KC_F1)
-#define MY_F2   MT(TG(1), KC_F2)
-#define MY_F3   MT(TG(2), KC_F3)
-#define MY_F4   MT(TG(3), KC_F3)
+#define MY_SMOD MT(MOD_LSFT | MOD_LGUI, KC_TAB)
+#define MY_SPWN MT(MOD_LSFT | MOD_LGUI, MOD_LGUI | MOD_LSFT | KC_ENT) // $TERM Spawn
+#define MY_F1   TD(TD_MY_F1)
+#define MY_F2   TD(TD_MY_F2)
+
+enum {
+	TD_MY_F1,
+	TD_MY_F2
+};
+
+qk_tap_dance_action_t tap_dance_actions[] = {
+	[TD_MY_F1] = ACTION_TAP_DANCE_LAYER_TOGGLE(KC_F1, 0),
+	[TD_MY_F2] = ACTION_TAP_DANCE_LAYER_TOGGLE(KC_F2, 3)
+};
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     /*                                                                                                                              *
      * ┌──────┬──────┬──────┬──────┬──────┬──────┐                                      ┌──────┬──────┬──────┬──────┬──────┬──────┐ *
-     * │ F1   │ F2   │ F3   │ F4   │ F5   │ F6   │                                      │ F7   │ F8   │ F9   │ F10  │ F11  │ F12  │ *
+     * │ F11  │ F1   │ F2   │ F3   │ F4   │ F5   │                                      │ F6   │ F7   │ F8   │ F9   │ F10  │ F12  │ *
      * │      │      │      │      │      │      │                                      │      │      │      │      │      │      │ *
      * │      │      │      │      │      │      │                                      │      │      │      │      │      │      │ *
      * ├──────┼──────┼──────┼──────┼──────┼──────┤                                      ├──────┼──────┼──────┼──────┼──────┼──────┤ *
@@ -63,7 +71,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 		//-------+-------+-------+-------+-------+--------|*                                                 *|-------+-------+-------+-------+-------+--------||
 		//       |       |       |       |       |        |*                                                 *|       |       |       |       |       |        ||
-	      MY_F1  ,MY_F2  ,MY_F3  ,MY_F4  ,KC_F5  ,KC_F6  ,/*                                                 */KC_F7  ,KC_F8  ,KC_F9  ,KC_F10 ,KC_F11 ,KC_F12 ,//
+	      KC_F12 ,MY_F1  ,MY_F2  ,KC_F3  ,KC_F4  ,KC_F5  ,/*                                                 */KC_F6  ,KC_F7  ,KC_F8  ,KC_F9  ,KC_F10 ,KC_F12 ,//
 		//       |       |       |       |       |        |*                                                 *|       |       |       |       |       |        ||
 		//-------+-------+-------+-------+-------+--------|*                                                 *|-------+-------+-------+-------+-------+--------||
 		//       |       |       |       |       |        |*                                                 *|       |       |       |       |       |        ||
@@ -88,11 +96,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 						//-------+-------+=======+========|*                                                 *|=======+=======+-------+--------||
 															//-------+--------|*         *|-------+--------||
 															//       |        |*         *|       |        ||
-	                                                          KC_LCTL,MY_LSFT,/*         */MY_RSFT,KC_LGUI,//
+	                                                          KC_LCTL,KC_LSFT,/*         */KC_RALT,KC_LGUI,//
 															//       |        |*         *|       |        ||
 															//-------+--------|*         *|-------+--------||
 															//       |        |*         *|       |        ||
-	                                                          KC_LGUI,KC_LALT,/*         */KC_RALT,MY_SPWN //
+	                                                          KC_LGUI,KC_LALT,/*         */MY_RSFT,MY_SPWN //
 															//       |        |*         *|       |        ||
 															//-------+--------|*         *|-------+--------||
 	),
@@ -180,7 +188,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 		//-------+-------+-------+-------+-------+--------|*                                                 *|-------+-------+-------+-------+-------+--------||
 		//       |       |       |       |       |        |*                                                 *|       |       |       |       |       |        ||
-		  KC_F1  ,KC_F2  ,KC_F3  ,KC_F4  ,KC_F5  ,KC_F6  ,/*                                                 */KC_F7  ,KC_F8  ,KC_F9  ,KC_F10 ,KC_F11 ,KC_F12 ,//
+	      KC_F12 ,MY_F1  ,MY_F2  ,KC_F3  ,KC_F4  ,KC_F5  ,/*                                                 */KC_F6  ,KC_F7  ,KC_F8  ,KC_F9  ,KC_F10 ,KC_F12 ,//
 		//       |       |       |       |       |        |*                                                 *|       |       |       |       |       |        ||
 		//-------+-------+-------+-------+-------+--------|*                                                 *|-------+-------+-------+-------+-------+--------||
 		//       |       |       |       |       |        |*                                                 *|       |       |       |       |       |        ||
@@ -205,7 +213,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 						//-------+-------+=======+========|*                                                 *|=======+=======+-------+--------||
 															//-------+--------|*         *|-------+--------||
 															//       |        |*         *|       |        ||
-															  KC_LCTL,MY_LSFT,/*         */MY_RSFT,KC_LGUI,//
+															  KC_LCTL,KC_LSFT,/*         */MY_RSFT,KC_LGUI,//
 															//       |        |*         *|       |        ||
 															//-------+--------|*         *|-------+--------||
 															//       |        |*         *|       |        ||
