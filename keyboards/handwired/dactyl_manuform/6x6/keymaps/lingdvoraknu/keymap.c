@@ -17,22 +17,118 @@
 
 /* CUSTOM KEYS                                                                */
 //#define MY_LSFT MT(MOD_LSFT, KC_SPC)
+//#define MODS_SHIFT_MASK (MOD_BIT(KC_LSHIFT)|MOD_BIT(KC_RSHIFT))
 #define MY_RSFT MT(MOD_RSFT, KC_SPC)
-#define MY_SMOD MT(MOD_LSFT | MOD_LGUI, KC_TAB)
-#define MY_SPWN MT(MOD_LSFT | MOD_LGUI, MOD_LGUI | MOD_LSFT | KC_ENT) // $TERM Spawn
+#define MY_MOD  MT(MOD_LGUI, KC_DEL)
+#define MY_SMOD MT(MOD_LSFT | MOD_LGUI, KC_BSLS)
+//#define MY_SPWN MT(MOD_LSFT | MOD_LGUI, MOD_LGUI | MOD_LSFT | KC_ENT) // $TERM Spawn
 #define MY_F1   TD(TD_MY_F1)
 #define MY_F2   TD(TD_MY_F2)
+#define MY_F3   TD(TD_MY_F3)
+#define MY_F4   TD(TD_MY_F4)
+//#define MY_LEFT MY_ARROW_LEFT
+//#define MY_RGHT MY_ARROW_RIGHT
+//#define MY_BSPC MY_BACKSPACE
 
+/* ENUMERATE CUSTOM KEY NAMES                                                 */
 enum {
 	TD_MY_F1,
-	TD_MY_F2
+	TD_MY_F2,
+	TD_MY_F3,
+	TD_MY_F4//,
+//	MY_ARROW_LEFT,
+//	MY_ARROW_RIGHT,
+//	MY_BACKSPACE
 };
 
+/* DEFINE TAP DANCE                                                           */
 qk_tap_dance_action_t tap_dance_actions[] = {
 	[TD_MY_F1] = ACTION_TAP_DANCE_LAYER_TOGGLE(KC_F1, 0),
-	[TD_MY_F2] = ACTION_TAP_DANCE_LAYER_TOGGLE(KC_F2, 3)
+	[TD_MY_F2] = ACTION_TAP_DANCE_LAYER_TOGGLE(KC_F2, 3),
+	[TD_MY_F3] = ACTION_TAP_DANCE_LAYER_TOGGLE(KC_F3, 1),
+	[TD_MY_F4] = ACTION_TAP_DANCE_LAYER_TOGGLE(KC_F4, 2)
 };
 
+	/* DEFINE CUSTOM KEYS                                                         */
+//	bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+//		switch(keycode) {
+			/**********************************************************************
+			 * LEFT/DOWN ARROW                                                    *
+			 **********************************************************************/
+//			case MY_ARROW_LEFT: {
+				// If key pressed
+//				if (record->event.pressed) {
+//					if (keyboard_report->mods & MODS_SHIFT_MASK) {
+//						register_code(KC_DOWN);
+//					} else {
+//	//					register_code(KC_LSFT);
+//						register_code(KC_LEFT);
+//					}
+				// If key depressed
+//				} else {
+//					if (keyboard_report->mods & MODS_SHIFT_MASK) {
+//						unregister_code(KC_DOWN);
+//					} else {
+	//					unregister_code(KC_LSFT);
+//						unregister_code(KC_LEFT);
+//					}
+//				}
+//				return false;
+//				break;
+//			}
+			/**********************************************************************
+			 * RIGHT/UP ARROW                                                     *
+			 **********************************************************************/
+//			case MY_ARROW_RIGHT: {
+//				// If key pressed
+//				if (record->event.pressed) {
+//					if (keyboard_report->mods & MODS_SHIFT_MASK) {
+//						register_code(KC_UP);
+//					} else {
+//	//					register_code(KC_LSFT);
+//						register_code(KC_RGHT);
+//					}
+//				// If key depressed
+//				} else {
+//					if (keyboard_report->mods & MODS_SHIFT_MASK) {
+//						unregister_code(KC_UP);
+//					} else {
+//	//					unregister_code(KC_LSFT);
+//						unregister_code(KC_RGHT);
+//					}
+//				}
+//				return false;
+//				break;
+//			}
+			/**********************************************************************
+			 * BACKSPACE                                                          *
+			 **********************************************************************/
+//			case MY_BACKSPACE: {
+				// If key pressed
+//				if (record->event.pressed) {
+//					if (keyboard_report->mods & MODS_SHIFT_MASK) {
+//						register_code(KC_DEL);
+//					} else {
+//	//					register_code(KC_LSFT);
+//						register_code(KC_BSPC);
+//					}
+				// If key depressed
+//				} else {
+//					if (keyboard_report->mods & MODS_SHIFT_MASK) {
+//						unregister_code(KC_DEL);
+//					} else {
+//	//					unregister_code(KC_LSFT);
+//						unregister_code(KC_BSPC);
+//					}
+//				}
+//				return false;
+//				break;
+//			}
+//		}
+//		return true;
+//	}
+
+/* KEYMAP LAYERS                                                              */
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     /*                                                                                                                              *
@@ -71,7 +167,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 		//-------+-------+-------+-------+-------+--------|*                                                 *|-------+-------+-------+-------+-------+--------||
 		//       |       |       |       |       |        |*                                                 *|       |       |       |       |       |        ||
-	      KC_F11 ,MY_F1  ,MY_F2  ,KC_F3  ,KC_F4  ,KC_F5  ,/*                                                 */KC_F6  ,KC_F7  ,KC_F8  ,KC_F9  ,KC_F10 ,KC_F12 ,//
+	      KC_F11 ,MY_F1  ,MY_F2  ,MY_F3  ,MY_F4  ,KC_F5  ,/*                                                 */KC_F6  ,KC_F7  ,KC_F8  ,KC_F9  ,KC_F10 ,KC_F12 ,//
 		//       |       |       |       |       |        |*                                                 *|       |       |       |       |       |        ||
 		//-------+-------+-------+-------+-------+--------|*                                                 *|-------+-------+-------+-------+-------+--------||
 		//       |       |       |       |       |        |*                                                 *|       |       |       |       |       |        ||
@@ -87,20 +183,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		//       |       |       |       |       |        |*                                                 *|       |       |       |       |       |        ||
 		//-------+-------+-------+-------+-------+--------|*                                                 *|-------+-------+-------+-------+-------+--------||
 		//       |       |       |       |       |        |*                                                 *|       |       |       |       |       |        ||
-	      MY_NUM ,KC_SCLN,KC_Q   ,KC_J   ,KC_K   ,KC_X   ,/*                                                 */KC_B   ,KC_M   ,KC_W   ,KC_V   ,KC_Z   ,RAISE  ,//
+	      KC_LBRC,KC_SCLN,KC_Q   ,KC_J   ,KC_K   ,KC_X   ,/*                                                 */KC_B   ,KC_M   ,KC_W   ,KC_V   ,KC_Z   ,KC_RBRC,//
 		//       |       |       |       |       |        |*                                                 *|       |       |       |       |       |        ||
 		//-------+-------+-------+-------+=======+========|*                                                 *|=======+=======+-------+-------+-------+--------||
 						//       |       |       |        |*                                                 *|       |       |       |        ||
-	                      KC_LBRC,KC_RBRC,MY_SMOD,KC_SPC ,/*                                                 */KC_BSPC,KC_ENT ,KC_DEL ,KC_BSLS,//
+	                      KC_LEFT,KC_RGHT,MY_SMOD,KC_SPC ,/*                                                 */KC_BSPC,KC_ENT ,KC_DOWN,KC_UP  ,//
 						//       |       |       |        |*                                                 *|       |       |       |        ||
 						//-------+-------+=======+========|*                                                 *|=======+=======+-------+--------||
 															//-------+--------|*         *|-------+--------||
 															//       |        |*         *|       |        ||
-	                                                          KC_LCTL,KC_LSFT,/*         */KC_RALT,KC_LGUI,//
+	                                                          KC_LCTL,KC_LSFT,/*         */KC_RALT,MY_MOD, //
 															//       |        |*         *|       |        ||
 															//-------+--------|*         *|-------+--------||
 															//       |        |*         *|       |        ||
-	                                                          KC_LGUI,KC_LALT,/*         */MY_RSFT,MY_SPWN //
+	                                                          KC_LGUI,KC_LALT,/*         */KC_RCTL,MY_SMOD //
 															//       |        |*         *|       |        ||
 															//-------+--------|*         *|-------+--------||
 	),
@@ -130,7 +226,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		//       |       |       |       |       |        |*                                                 *|       |       |       |       |       |        ||
 		//-------+-------+-------+-------+=======+========|*                                                 *|=======+=======+-------+-------+-------+--------||
 						//       |       |       |        |*                                                 *|       |       |       |        ||
-						  MY_NUM ,RAISE  ,_______,_______,/*                                                 */_______,_______,KC_P0  ,KC_PDOT,//
+						  _______,_______,_______,_______,/*                                                 */_______,_______,KC_P0  ,KC_PDOT,//
 						//       |       |       |        |*                                                 *|       |       |       |        ||
 						//-------+-------+=======+========|*                                                 *|=======+=======+-------+--------||
 															//-------+--------|*         *|-------+--------||
@@ -157,19 +253,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		//       |       |       |       |       |        |*                                                 *|       |       |       |       |       |        ||
 		//-------+-------+-------+-------+-------+--------|*                                                 *|-------+-------+-------+-------+-------+--------||
 		//       |       |       |       |       |        |*                                                 *|       |       |       |       |       |        ||
-		  _______,_______,_______,KC_W   ,KC_E   ,KC_R   ,/*                                                 */_______,_______,_______,_______,_______,_______,//
+		  _______,KC_TAB ,KC_Q   ,KC_W   ,KC_E   ,KC_R   ,/*                                                 */_______,_______,_______,_______,_______,_______,//
 		//       |       |       |       |       |        |*                                                 *|       |       |       |       |       |        ||
 		//-------+-------+-------+-------+-------+--------|*                                                 *|-------+-------+-------+-------+-------+--------||
 		//       |       |       |       |       |        |*                                                 *|       |       |       |       |       |        ||
-		  _______,_______,KC_A   ,KC_S   ,KC_D   ,_______,/*                                                 */_______,KC_LEFT,KC_DOWN,KC_UP  ,KC_RGHT,_______,//
+		  _______,KC_LSFT,KC_A   ,KC_S   ,KC_D   ,KC_F   ,/*                                                 */KC_HOME,KC_LEFT,KC_DOWN,KC_UP  ,KC_RGHT,KC_END ,//
 		//       |       |       |       |       |        |*                                                 *|       |       |       |       |       |        ||
 		//-------+-------+-------+-------+-------+--------|*                                                 *|-------+-------+-------+-------+-------+--------||
 		//       |       |       |       |       |        |*                                                 *|       |       |       |       |       |        ||
-		  _______,_______,_______,_______,_______,_______,/*                                                 */_______,_______,_______,_______,_______,_______,//
+		  _______,KC_LCTL,KC_Z   ,KC_X   ,KC_C   ,KC_V   ,/*                                                 */_______,_______,_______,_______,_______,_______,//
 		//       |       |       |       |       |        |*                                                 *|       |       |       |       |       |        ||
 		//-------+-------+-------+-------+=======+========|*                                                 *|=======+=======+-------+-------+-------+--------||
 						//       |       |       |        |*                                                 *|       |       |       |        ||
-						  MY_NUM ,RAISE  ,_______,_______,/*                                                 */_______,_______,_______,_______,//
+						  _______,_______,_______,_______,/*                                                 */_______,_______,_______,_______,//
 						//       |       |       |        |*                                                 *|       |       |       |        ||
 						//-------+-------+=======+========|*                                                 *|=======+=======+-------+--------||
 															//-------+--------|*         *|-------+--------||
@@ -188,36 +284,36 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 		//-------+-------+-------+-------+-------+--------|*                                                 *|-------+-------+-------+-------+-------+--------||
 		//       |       |       |       |       |        |*                                                 *|       |       |       |       |       |        ||
-	      KC_F12 ,MY_F1  ,MY_F2  ,KC_F3  ,KC_F4  ,KC_F5  ,/*                                                 */KC_F6  ,KC_F7  ,KC_F8  ,KC_F9  ,KC_F10 ,KC_F12 ,//
+		  _______,_______,_______,_______,_______,_______,/*                                                 */_______,_______,_______,_______,_______,_______,//
 		//       |       |       |       |       |        |*                                                 *|       |       |       |       |       |        ||
 		//-------+-------+-------+-------+-------+--------|*                                                 *|-------+-------+-------+-------+-------+--------||
 		//       |       |       |       |       |        |*                                                 *|       |       |       |       |       |        ||
-		  KC_GRV ,KC_1   ,KC_2   ,KC_3   ,KC_4   ,KC_5   ,/*                                                 */KC_6   ,KC_7   ,KC_8   ,KC_9   ,KC_0   ,KC_MINS,//
+		  _______,_______,_______,_______,_______,_______,/*                                                 */_______,_______,_______,_______,_______,KC_MINS,//
 		//       |       |       |       |       |        |*                                                 *|       |       |       |       |       |        ||
 		//-------+-------+-------+-------+-------+--------|*                                                 *|-------+-------+-------+-------+-------+--------||
 		//       |       |       |       |       |        |*                                                 *|       |       |       |       |       |        ||
-		  KC_TAB ,KC_Q   ,KC_W   ,KC_E   ,KC_R   ,KC_T   ,/*                                                 */KC_Y   ,KC_U   ,KC_I   ,KC_O   ,KC_P   ,KC_EQL ,//
+		  _______,KC_Q   ,KC_W   ,KC_E   ,KC_R   ,KC_T   ,/*                                                 */KC_Y   ,KC_U   ,KC_I   ,KC_O   ,KC_P   ,KC_EQL ,//
 		//       |       |       |       |       |        |*                                                 *|       |       |       |       |       |        ||
 		//-------+-------+-------+-------+-------+--------|*                                                 *|-------+-------+-------+-------+-------+--------||
 		//       |       |       |       |       |        |*                                                 *|       |       |       |       |       |        ||
-		  KC_ESC ,KC_A   ,KC_S   ,KC_D   ,KC_F   ,KC_G   ,/*                                                 */KC_H   ,KC_J   ,KC_K   ,KC_L   ,KC_SCLN,KC_QUOT,//
+		  _______,KC_A   ,KC_S   ,KC_D   ,KC_F   ,KC_G   ,/*                                                 */KC_H   ,KC_J   ,KC_K   ,KC_L   ,KC_SCLN,KC_QUOT,//
 		//       |       |       |       |       |        |*                                                 *|       |       |       |       |       |        ||
 		//-------+-------+-------+-------+-------+--------|*                                                 *|-------+-------+-------+-------+-------+--------||
 		//       |       |       |       |       |        |*                                                 *|       |       |       |       |       |        ||
-		  MY_NUM ,KC_Z   ,KC_X   ,KC_C   ,KC_V   ,KC_B   ,/*                                                 */KC_N   ,KC_M   ,KC_COMM,KC_DOT ,KC_SLSH,RAISE  ,//
+		  _______,KC_Z   ,KC_X   ,KC_C   ,KC_V   ,KC_B   ,/*                                                 */KC_N   ,KC_M   ,KC_COMM,KC_DOT ,KC_SLSH,_______,//
 		//       |       |       |       |       |        |*                                                 *|       |       |       |       |       |        ||
 		//-------+-------+-------+-------+=======+========|*                                                 *|=======+=======+-------+-------+-------+--------||
 						//       |       |       |        |*                                                 *|       |       |       |        ||
-						  KC_LBRC,KC_RBRC,MY_SMOD,KC_SPC ,/*                                                 */KC_BSPC,KC_ENT ,KC_DEL ,KC_BSLS,//
+						  _______,_______,_______,_______,/*                                                 */_______,_______,_______,_______,//
 						//       |       |       |        |*                                                 *|       |       |       |        ||
 						//-------+-------+=======+========|*                                                 *|=======+=======+-------+--------||
 															//-------+--------|*         *|-------+--------||
 															//       |        |*         *|       |        ||
-															  KC_LCTL,KC_LSFT,/*         */MY_RSFT,KC_LGUI,//
+															  _______,_______,/*         */_______,_______,//
 															//       |        |*         *|       |        ||
 															//-------+--------|*         *|-------+--------||
 															//       |        |*         *|       |        ||
-															  KC_LGUI,KC_LALT,/*         */KC_RALT,MY_SPWN //
+															  _______,_______,/*         */_______,_______ //
 															//       |        |*         *|       |        ||
 															//-------+--------|*         *|-------+--------||
 	),
